@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Fusion Login and Signup</title>
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <div class="container" id="container">
+         <div class="form-container sign-up-container active">
+            <form>
+               <h1>Create Your Account</h1>
+               <input type="text" placeholder="Name" required>
+               <input type="email" placeholder="Email" required>
+               <input type="date" placeholder="DoB" required>
+               <input type="password" placeholder="Password" minlength="8" required>
+               <input type="password" placeholder="Re-Enter Password" minlength="8" required>
+               <button class="signhover">Sign Up</button>
+               <br>
+               <span>or use your email for registration</span>
+               <div class="social-container">
+                  <a href="#" class="social"><img src="img/facebook.png" alt="facebook" class="icn"></a>
+                  <a href="#" class="social"><img src="img/google.png" alt="google" class="icn"></a>
+                  <a href="#" class="social"><img src="img/linkedin.png" alt="linkedin" class="icn"></a>
+               </div>
+            </form>
+         </div>
+         <div class="form-container sign-in-container">
+            <form>
+               <h3>Log In</h3>
+               <input type="email" placeholder="Email" required>
+               <input type="password" placeholder="Password" minlength="8" required>
+               <a href="#">Forgot your password?</a>
+               <button class="signhover">Log In</button>
+               <br>
+               <span>or use your account</span>
+               <div class="social-container">
+                  <a href="#" class="social"><img src="img/facebook.png" alt="facebook" class="icn"></a>
+                  <a href="#" class="social"><img src="img/google.png" alt="google" class="icn"></a>
+                  <a href="#" class="social"><img src="img/linkedin.png" alt="linkedin" class="icn"></a>
+               </div>
+            </form>
+         </div>
+         <div class="overlay-container">
+            <div class="overlay">
+               <div class="overlay-panel overlay-left">
+                  <h1>Welcome Back!</h1>
+                  <p>To keep connected with us please login with your personal info</p>
+                  <button class="ghost" id="signIn">Log In</button>
+               </div>
+               <div class="overlay-panel overlay-right">
+                  <h1>Hello, Friend!</h1>
+                  <p>Enter your personal details and start your journey with us</p>
+                  <button class="ghost" id="signUp">Sign Up</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- 
+         <footer>
+             <p>Hello</p>
+         </footer> -->
+      <script>
+         const signUpButton = document.getElementById('signUp');
+         const container = document.getElementById('container');
+         const signInButton = document.getElementById('signIn');
+
+         // Update Default View
+         container.classList.add("right-panel-active");
+
+         signUpButton.addEventListener('click', () => {
+             container.classList.add("right-panel-active");
+         });
+
+         signInButton.addEventListener('click', () => {
+             container.classList.remove("right-panel-active");
+         });
+      </script>
+   </body>
+</html>
