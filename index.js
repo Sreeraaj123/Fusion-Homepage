@@ -173,9 +173,6 @@ colorPalette.forEach(color => {
     })
 })
 
-
-
-
 // theme BACKGROUND values
 let lightColorLightness;
 let whiteColorLightness;
@@ -225,27 +222,109 @@ Bg3.addEventListener('click' ,() => {
 
 
 
-const starIcon = document.querySelector('.middle .feed .action-buttons span i.uil-star');
-starIcon.addEventListener('click', function() {
-    this.classList.toggle('clicked');
-});
+// animation after liking a button
+let likeButtons = document.querySelectorAll('.like-button');
 
-// to increase the count of likes
-let likeButton = document.querySelector('.like-button');
-let likeIcon = likeButton.querySelector('i');
-let likeCount = likeButton.querySelector('.like-count');
+likeButtons.forEach(likeButton => {
+  let likeIcon = likeButton.querySelector('i');
+  let likeCount = likeButton.querySelector('.like-count');
 
-let liked = false;
-let count = parseInt(likeCount.innerText);
+  let liked = false;
+  let count = parseInt(likeCount.innerText);
 
-likeButton.addEventListener('click', () => {
+  likeButton.addEventListener('click', () => {
     if (!liked) {
-        likeIcon.classList.add('clicked');
-        likeCount.innerText = ++count;
-        liked = true;
+      likeIcon.classList.add('clicked');
+      
+      likeCount.innerText = ++count;
+      liked = true;
     } else {
-        likeIcon.classList.remove('clicked');
-        likeCount.innerText = --count;
-        liked = false;
+      likeIcon.classList.remove('clicked');
+      
+      likeCount.innerText = --count;
+      liked = false;
     }
+
+  });
 });
+
+
+
+
+
+
+const logoutIcon = document.querySelector('.uil-signout');
+logoutIcon.addEventListener('click', showLogoutModal);
+
+function showLogoutModal() {
+    // Create the modal container element
+    const modalContainer = document.createElement('div');
+    modalContainer.classList.add('modal-container');
+  
+    // Create the modal content element
+    const modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
+  
+    // Create the modal message element
+    const modalMessage = document.createElement('p');
+    modalMessage.textContent = 'Are you sure you want to log out?';
+  
+    // Create the confirm button element
+    const confirmButton = document.createElement('button');
+    confirmButton.textContent = 'Confirm Logout';
+    confirmButton.classList.add('confirm-button');
+    confirmButton.addEventListener('click', logout);
+  
+    // Append the modal message and confirm button to the modal content
+    modalContent.appendChild(modalMessage);
+    modalContent.appendChild(confirmButton);
+  
+    // Append the modal content to the modal container
+    modalContainer.appendChild(modalContent);
+  
+    // Append the modal container to the document body
+    document.body.appendChild(modalContainer);
+  
+    // Add event listener to modal container to close modal on click outside of modal content
+    modalContainer.addEventListener('click', (event) => {
+      if (event.target === modalContainer) {
+        modalContainer.remove();
+      }
+    });
+  }
+  
+
+  function logout() {
+    // Perform logout action here
+    // For example:
+    window.location.href = 'logout.php';
+  }
+  
+
+
+
+const personalMessages = document.getElementById('message-list-personal');
+const communitiesMessages = document.getElementById('message-list-communities');
+const personalTab = document.getElementById('personal');
+const communitiesTab = document.getElementById('communities');
+
+personalTab.addEventListener('click', () => {
+  if (!personalTab.classList.contains('active')) {
+    personalTab.classList.add('active');
+    communitiesTab.classList.remove('active');
+    personalMessages.style.display = 'block';
+    communitiesMessages.style.display = 'none';
+  }
+});
+
+communitiesTab.addEventListener('click', () => {
+  if (!communitiesTab.classList.contains('active')) {
+    communitiesTab.classList.add('active');
+    personalTab.classList.remove('active');
+    communitiesMessages.style.display = 'block';
+    personalMessages.style.display = 'none';
+  }
+});
+
+
+
