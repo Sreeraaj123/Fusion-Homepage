@@ -337,10 +337,10 @@
                   <div class="category">
                     <h6 class="active" id="personal">Personal</h6>
                     <h6 id="communities">Communities</h6>
-                    <h6 class="message-request">Requests(7)</h6>
                   </div>
                   <div class="message-list" id="message-list-personal">
                     <!-- Personal messages -->
+                    <!-- Message 1 -->
                     <div class="message">
                         <div class="profile-photo">
                             <img src="./images/profile-2.jpg">
@@ -395,6 +395,25 @@
                   </div>
                   <div class="message-list" id="message-list-communities" style="display: none;">
                     <!-- Communities messages -->
+                    <div class="create-community">
+                        <i class="uil uil-plus"></i>
+                        <h5>Create Communities</h5>
+                      </div>
+                      
+                      <div class="form-popup" id="form-popup">
+                        <form>
+                          <button type="button" class="close-btn"><i class="uil uil-times-circle"></i></button>
+                          <h4>Group Name:</h4>
+                          <input type="text" id="group-name" name="group-name">
+                          <h4>Upload Photo:</h4>
+                          <input type="file" id="photo-upload" name="photo-upload">
+                          <img id="preview">
+                          <button class="btn btn-primary"> Create </button>
+                        </form>
+                      </div>
+                      
+                      
+
                     <!-- Community Chat 1 -->
                     <div class="message">
                         <div class="profile-photo">

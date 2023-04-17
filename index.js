@@ -40,8 +40,7 @@ menuItems.forEach(item => {
             document.querySelector('#notifications .notification-count').style.display = 'none';
         }
     })
-})
-
+});
 
 // ----------------------  MESSAGES  ------------------------
 // searches chats
@@ -328,3 +327,49 @@ communitiesTab.addEventListener('click', () => {
 
 
 
+
+// Get the button and the form elements
+const createCommunityBtn = document.querySelector('.create-community h5');
+const formPopup = document.querySelector('.form-popup');
+const closeBtn = document.querySelector('.close-btn');
+const previewImg = document.getElementById('preview');
+const fileInput = document.getElementById('photo-upload');
+
+// Function to open the form popup
+function openForm() {
+  formPopup.style.display = "block";
+  document.body.style.overflow = "hidden"; // prevent scrolling in the background
+}
+
+// Function to close the form popup
+function closeForm() {
+  formPopup.style.display = "none";
+  document.body.style.overflow = "auto"; // allow scrolling in the background again
+}
+
+// When the "Create Communities" button is clicked, open the form
+createCommunityBtn.addEventListener('click', openForm);
+
+// When the "X" button is clicked, close the form
+closeBtn.addEventListener('click', closeForm);
+
+// When the user clicks outside the form, close the form
+window.addEventListener('click', function(event) {
+  if (event.target == formPopup) {
+    closeForm();
+  }
+});
+
+// Preview the selected image
+fileInput.addEventListener('change', function() {
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+
+  reader.addEventListener('load', function() {
+    previewImg.src = reader.result;
+  });
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+});
